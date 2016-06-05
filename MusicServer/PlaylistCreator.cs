@@ -44,21 +44,17 @@ namespace MusicServer
             for (int i=0;i<amountOfSongsInThePlaylist;i++)
             {
                 double itemWeightIndex = (random.NextDouble()) * itemTotalWeight;
-                double currentWeightIndex = 0;
+
+                double runningTotalBeginning = 0;
+                double runningTotalEnd = 0;
 
                 foreach (var item in genresWeights)
                 {
-                    for (double j = currentWeightIndex; j < item.Value + currentWeightIndex; j++)
-                    {
-                        if (j >= itemWeightIndex)
-                        {
+                    runningTotalBeginning = runningTotalEnd;
+                    runningTotalEnd += item.Value;
+                    if (itemWeightIndex >= runningTotalBeginning && itemWeightIndex <= runningTotalEnd)
                             genreOnlyPlaylistSkeleton.Add(item.Key);
-                            goto endrandom;
-                        }
                     }
-                    currentWeightIndex += item.Value;
-                }
-            endrandom:;
             }
 
             return genreOnlyPlaylistSkeleton;

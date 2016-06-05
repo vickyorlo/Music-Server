@@ -15,47 +15,93 @@ namespace MusicServer
         public Form1()
         {
             InitializeComponent();
+            loadUserBase();
+            loadMusicLibrary;
         }
 
-        Dictionary<string, Genre> myMusicLibrary = new Dictionary<string, Genre>()
+        Dictionary<string, Genre> myMusicLibrary = new Dictionary<string, Genre>();
+        private List<User> userBase = new List<User>();
+        private List<User> usersIdentified = new List<User>();
+        private Dictionary<string, User> userLookup = new Dictionary<string, User>();
+
+        public void loadUserBase()
         {
-            {"Fall in the dark", Genre.Doujin },
-            {"Into Free", Genre.Rock },
-            {"NO SCARED", Genre.Rock },
-            {"One-Way Highway", Genre.EuroBeat },
-            {"Bad Apple!",Genre.Soundtrack },
-            {"Necrofantasia",Genre.Rock },
-            {"Plain Asia",Genre.Rock },
-            {"Clockup Flowers",Genre.Rock },
-            {"One minute and some seconds of silence",Genre.Classical },
-            {"IRON ATTACK!",Genre.Metal }
-        };
-        private List<User> usersContainer = new List<User>()
-        {
-            { new User("vic",new List<MusicListenedTo>()
+            //todo: load userbase from a file, probably made by just serializing it whatever
+            //also make more of it
+            userBase.Add(new User("vic", new List<MusicListenedTo>()
             {
                 {new MusicListenedTo(Genre.Doujin,40,"Shibayan Records") },
                 {new MusicListenedTo(Genre.Rock,80,"One OK Rock") }
             }
-            ,1) },
-            { new User("rose",new List<MusicListenedTo>()
-            {
-                {new MusicListenedTo(Genre.Metal,100,"whatever") }
-            }
-            ,1.5) },
-            { new User("treo",new List<MusicListenedTo>()
-            {
-                {new MusicListenedTo(Genre.Classical,120,"mozarts farts") }
-            }
-            ,0.7) }
-        };
+            , 1));
 
+            userBase.Add(new User("treo", new List<MusicListenedTo>()
+            {
+                {new MusicListenedTo(Genre.Metal,40,"whatever") },
+                {new MusicListenedTo(Genre.EuroBeat,80,"A-One") }
+            }
+            , 0.75));
+
+            userBase.Add(new User("rose", new List<MusicListenedTo>()
+            {
+                {new MusicListenedTo(Genre.Classical,40,"Mozarella") },
+                {new MusicListenedTo(Genre.Soundtrack,80,"fuck movies") }
+            }
+            , 2));
+
+            foreach (User user in userBase)
+            {
+                userLookup.Add(user.UsersMacAddress, user);
+            }
+        }
+
+        public void loadMusicLibrary()
+        {
+            //probably load this from a file or some such
+            myMusicLibrary = new Dictionary<string, Genre>()
+           {
+                {"Fall in the dark", Genre.Doujin },
+                {"Into Free", Genre.Rock },
+                {"NO SCARED", Genre.Rock },
+                {"One-Way Highway", Genre.EuroBeat },
+                {"Bad Apple!",Genre.Soundtrack },
+                {"Necrofantasia",Genre.Rock },
+                {"Plain Asia",Genre.Rock },
+                {"Clockup Flowers",Genre.Rock },
+                {"One minute and some seconds of silence",Genre.Classical },
+                {"IRON ATTACK!",Genre.Metal }
+            };
+        }
+
+        public void loadUnloadUser(string userMacAddress)
+        {
+            if (!usersIdentified.Contains(userLookup[userMacAddress]))
+                usersIdentified.Add(userLookup[userMacAddress]);
+            else
+                usersIdentified.Remove(userLookup[userMacAddress]);
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            PlaylistCreator playlistCreator = new PlaylistCreator(usersContainer, myMusicLibrary);
+            loadUnloadUser("vic");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            loadUnloadUser("treo");
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            loadUnloadUser("rose");
+        }
+
+        private void button7_Click(object sender, EventArgs e)
+        {
+            PlaylistCreator playlistCreator = new PlaylistCreator(usersIdentified, myMusicLibrary);
             Playlist generatedPlaylist = playlistCreator.CreatePlaylist();
-            MessageBox.Show(generatedPlaylist.ToString());
+            playlistTextBox.Text = generatedPlaylist.ToString();
+            Refresh();
         }
     }
 }

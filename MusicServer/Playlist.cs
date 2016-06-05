@@ -32,7 +32,7 @@ namespace MusicServer
             string result = "";
             foreach (string song in Songs)
             {
-                result += (song + "\n");
+                result += (song + Environment.NewLine);
             }
             return result;
         }

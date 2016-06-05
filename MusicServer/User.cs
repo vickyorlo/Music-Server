@@ -8,15 +8,17 @@ namespace MusicServer
 {
     class User
     {
-        private string UsersMacAdress;
+        private string usersMacAddress;
         public List<MusicListenedTo> UsersListenedMusic;
         private double hierarchyWeight;
 
         public double HierarchyWeight { get { return hierarchyWeight; } }
+        public string UsersMacAddress { get { return usersMacAddress; } }
 
-        public User(string macAdress, List<MusicListenedTo> listenedMusic, double weight)
+
+        public User(string macAddress, List<MusicListenedTo> listenedMusic, double weight)
         {
-            UsersMacAdress = macAdress;
+            usersMacAddress = macAddress;
             UsersListenedMusic = listenedMusic;
             hierarchyWeight = weight;
         }
