@@ -1,9 +1,9 @@
 c:\users\vic\documents\visual studio 2015\Projects\MusicServer\MusicServer\bin\Debug\MusicServer.exe.config
 C:\Users\Vic\documents\visual studio 2015\Projects\MusicServer\MusicServer\bin\Debug\MusicServer.exe
 C:\Users\Vic\documents\visual studio 2015\Projects\MusicServer\MusicServer\bin\Debug\MusicServer.pdb
-C:\Users\Vic\documents\visual studio 2015\Projects\MusicServer\MusicServer\obj\Debug\MusicServer.csprojResolveAssemblyReference.cache
 C:\Users\Vic\documents\visual studio 2015\Projects\MusicServer\MusicServer\obj\Debug\MusicServer.Form1.resources
 C:\Users\Vic\documents\visual studio 2015\Projects\MusicServer\MusicServer\obj\Debug\MusicServer.Properties.Resources.resources
 C:\Users\Vic\documents\visual studio 2015\Projects\MusicServer\MusicServer\obj\Debug\MusicServer.csproj.GenerateResource.Cache
 C:\Users\Vic\documents\visual studio 2015\Projects\MusicServer\MusicServer\obj\Debug\MusicServer.exe
 C:\Users\Vic\documents\visual studio 2015\Projects\MusicServer\MusicServer\obj\Debug\MusicServer.pdb
+C:\Users\Vic\documents\visual studio 2015\Projects\MusicServer\MusicServer\obj\Debug\MusicServer.csprojResolveAssemblyReference.cache

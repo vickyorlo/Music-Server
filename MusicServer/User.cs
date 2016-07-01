@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace MusicServer
 {
-    class User
+    public class User
     {
         private string usersMacAddress;
         public List<MusicListenedTo> UsersListenedMusic;
@@ -23,6 +23,26 @@ namespace MusicServer
             hierarchyWeight = weight;
         }
 
+        public User(string macAddress)
+        {
+            usersMacAddress = macAddress;
+            UsersListenedMusic = new List<MusicListenedTo>();
+            hierarchyWeight = 1;
+        }
+
+        public override bool Equals(Object obj)
+        {
+            User userObj = obj as User;
+            if (userObj == null)
+                return false;
+            else
+                return usersMacAddress.Equals(userObj.usersMacAddress);
+        }
+
+        public override int GetHashCode()
+        {
+            return usersMacAddress.GetHashCode();
+        }
 
     }
 }

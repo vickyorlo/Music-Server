@@ -10,9 +10,9 @@ namespace MusicServer
     {
 
         private List<User> IdentifiedUsers;
-        private Dictionary<string,Genre> MusicLibrary;
+        List<Tuple<string, string, Genre>> MusicLibrary;
 
-        public PlaylistCreator(List<User> identifiedUsers, Dictionary<string,Genre> library)
+        public PlaylistCreator(List<User> identifiedUsers, List<Tuple<string, string, Genre>> library)
         {
             IdentifiedUsers = identifiedUsers;
             MusicLibrary = library;

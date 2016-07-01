@@ -7,22 +7,20 @@ using System.Threading.Tasks;
 namespace MusicServer
 {
 
-    enum Genre
+    public enum Genre
     {
         Pop,
         Rock,
         Metal,
         Doujin,
         Indie,
-        EasyListening,
-        BossaNova,
         EuroBeat,
         Classical,
         Rap,
         Soundtrack
     }
 
-    class MusicListenedTo
+    public class MusicListenedTo
     {
         private Genre ListenedGenre;
         private int ListenedTimeInMinutes;
